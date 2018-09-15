@@ -6,18 +6,18 @@ alias dinc='function _dinc(){ docker exec -t $1 bash -c "$2"; };_dinc'
 alias dc='docker-compose'
 
 dorm (){
-  read -p 'Щас сотрутся все контейнеры, уверен? [y]: ' y
+  read -p 'Stop and remove all containers? Are you sure??? [y]: ' y
 
   case $y in
     y)
-    echo 'Ну все, пизда контейнерам...'
+    echo 'DEATH TO CONTAINERS!!!'
     docker stop $(docker ps -q)
     check_command_exec_status $?
     docker rm $(docker ps -qa)
     check_command_exec_status $?
-    echo 'Все'
+    echo 'Done... Are you happy?'
     ;;
     *)
-    echo 'Отбой';;
+    echo 'Ok, letting them live :)';;
   esac
 }
